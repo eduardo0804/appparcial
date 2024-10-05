@@ -12,7 +12,7 @@ using appparcial.Data;
 namespace appparcial.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241004235416_MigracionRegistroRemisiones")]
+    [Migration("20241005001702_MigracionRegistroRemisiones")]
     partial class MigracionRegistroRemisiones
     {
         /// <inheritdoc />
@@ -223,6 +223,25 @@ namespace appparcial.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("appparcial.Models.HistorialConversion", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<decimal>("TasaConversion")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("TipoConversion")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("t_historial_conversion");
                 });
 
             modelBuilder.Entity("appparcial.Models.RegistroRemesa", b =>

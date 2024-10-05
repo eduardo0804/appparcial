@@ -10,4 +10,5 @@ public class ApplicationDbContext : IdentityDbContext
     {
     }
     public DbSet<appparcial.Models.RegistroRemesa> DataRegistroRemesa { get; set; }
+    public DbSet<appparcial.Models.HistorialConversion> HistorialConversiones { get; set; }
 }
