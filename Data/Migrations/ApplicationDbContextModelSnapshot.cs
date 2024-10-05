@@ -230,10 +230,10 @@ namespace appparcial.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<decimal>("TasaConversion")
+                    b.Property<decimal>("BtcAmount")
                         .HasColumnType("numeric");
 
-                    b.Property<decimal>("TipoConversion")
+                    b.Property<decimal>("UsdAmount")
                         .HasColumnType("numeric");
 
                     b.HasKey("Id");
