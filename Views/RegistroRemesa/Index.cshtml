@@ -1,0 +1,106 @@
+@model appparcial.ViewModel.RegistroRemesaViewModel
+
+<h2 class="mb-4 text-center">Registrar Nueva Remesa</h2>
+
+<form asp-action="Registrar" method="post" class="p-4 border rounded shadow bg-light">
+    <div class="form-group">
+        <label for="NomRemitente">Nombre del Remitente</label>
+        <input asp-for="FormRemesa.NomRemitente" class="form-control" id="NomRemitente"
+            placeholder="Ingrese el nombre del remitente" required />
+    </div>
+    <div class="form-group">
+        <label for="NomDestinatario">Nombre del Destinatario</label>
+        <input asp-for="FormRemesa.NomDestinatario" class="form-control" id="NomDestinatario"
+            placeholder="Ingrese el nombre del destinatario" required />
+    </div>
+    <div class="form-group">
+        <label for="PaisOrigen">País de Origen</label>
+        <input asp-for="FormRemesa.PaisOrigen" class="form-control" id="PaisOrigen"
+            placeholder="Ingrese el país de origen" required />
+    </div>
+    <div class="form-group">
+        <label for="PaisDestino">País de Destino</label>
+        <input asp-for="FormRemesa.PaisDestino" class="form-control" id="PaisDestino"
+            placeholder="Ingrese el país de destino" required />
+    </div>
+    <div class="form-group">
+        <label for="MontoEnviado">Monto Enviado</label>
+        <div class="input-group">
+            <input asp-for="FormRemesa.MontoEnviado" class="form-control" id="MontoEnviado" placeholder="Ingrese monto"
+                required />
+            <div class="input-group-append">
+                <select class="custom-select" id="currencySelect" onchange="updateCurrency()">
+                    <option value="USD">USD</option>
+                    <option value="BTC">BTC</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="TasaCambio">Tasa de Cambio</label>
+        <input asp-for="FormRemesa.TasaCambio" class="form-control" id="TasaCambio"
+            placeholder="Ingrese la tasa de cambio" required />
+    </div>
+    <div class="form-group">
+        <label for="MontoFinal">Monto Final</label>
+        <input asp-for="FormRemesa.MontoFinal" class="form-control" id="MontoFinal" placeholder="Ingrese el monto final"
+            required />
+    </div>
+    <div class="form-group">
+        <label for="EstadoTransaccion">Estado de la Transacción</label>
+        <input asp-for="FormRemesa.EstadoTransaccion" class="form-control" id="EstadoTransaccion"
+            placeholder="Ingrese el estado de la transacción" required />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+</form>
+
+<script>
+    function updateCurrency() {
+        const currencySelect = document.getElementById('currencySelect');
+        const montoEnviadoInput = document.getElementById('MontoEnviado');
+        montoEnviadoInput.setAttribute('placeholder', 'Ingrese monto en ' + currencySelect.value);
+    }
+</script>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    form {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: #007bff;
+        margin-bottom: 1.5rem;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .form-control {
+        border-radius: 0.5rem;
+    }
+
+    .input-group {
+        margin-top: 5px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        border-radius: 0.5rem;
+        padding: 10px;
+        font-size: 1.1rem;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    .custom-select {
+        border-radius: 0.5rem;
+    }
+</style>
