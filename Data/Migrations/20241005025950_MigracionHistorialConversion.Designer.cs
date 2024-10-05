@@ -12,7 +12,7 @@ using appparcial.Data;
 namespace appparcial.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241005021733_MigracionHistorialConversion")]
+    [Migration("20241005025950_MigracionHistorialConversion")]
     partial class MigracionHistorialConversion
     {
         /// <inheritdoc />
@@ -233,10 +233,16 @@ namespace appparcial.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<decimal>("BtcAmount")
-                        .HasColumnType("numeric");
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("timestamp with time zone");
 
-                    b.Property<decimal>("UsdAmount")
+                    b.Property<string>("MonedaDestino")
+                        .HasColumnType("text");
+
+                    b.Property<string>("MonedaOrigen")
+                        .HasColumnType("text");
+
+                    b.Property<decimal?>("TasaCambio")
                         .HasColumnType("numeric");
 
                     b.HasKey("Id");

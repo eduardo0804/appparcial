@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using appparcial.Data;
+using appparcial.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,13 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+builder.Services.AddTransient<CoinMarketCapService>();
+
+app.MapControllerRoute(
+    name: "Conversiones",
+    pattern: "Conversiones/{action=Index}/{id?}",
+    defaults: new { controller = "Conversiones" }
+);
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
