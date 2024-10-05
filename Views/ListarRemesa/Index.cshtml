@@ -1,0 +1,73 @@
+@model appparcial.ViewModel.RegistroRemesaViewModel
+@{
+    ViewData["Title"] = "Listado de Remisiones";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">@ViewData["Title"]</h1>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Remitente</th>
+                    <th>Destinatario</th>
+                    <th>País Origen</th>
+                    <th>País Destino</th>
+                    <th>Monto Enviado</th>
+                    <th>Tasa Cambio</th>
+                    <th>Monto Final</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var remesa in Model.ListarRemesa)
+                {
+                    <tr>
+                        <td>@remesa.NomRemitente</td>
+                        <td>@remesa.NomDestinatario</td>
+                        <td>@remesa.PaisOrigen</td>
+                        <td>@remesa.PaisDestino</td>
+                        <td>@remesa.MontoEnviado</td>
+                        <td>@remesa.TasaCambio</td>
+                        <td>@remesa.MontoFinal</td>
+                        <td>
+                            <span
+                                class="badge @(remesa.EstadoTransaccion == "Completo" ? "badge-success" : "badge-warning")">
+                                @remesa.EstadoTransaccion
+                            </span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .table {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .thead-light th {
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+    }
+
+    .table td,
+    .table th {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .badge {
+        font-size: 0.9rem;
+    }
+</style>

@@ -18,12 +18,12 @@ namespace appparcial.Controllers
         public ListarRemesa(ILogger<ListarRemesa> logger, ApplicationDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
 
-            return View();
             var remisiones = _context.DataRegistroRemesa.ToList();
 
             var viewModel = new RegistroRemesaViewModel
@@ -31,7 +31,7 @@ namespace appparcial.Controllers
                 ListarRemesa = remisiones
             };
 
-            return View(viewModel); // Retorna la vista con el modelo
+            return View(viewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
