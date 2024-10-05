@@ -7,7 +7,10 @@ namespace appparcial.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
-        public decimal UsdAmount { get; set; }
-        public decimal BtcAmount { get; set; }
+        public string? MonedaOrigen { get; set; }
+        public string? MonedaDestino { get; set; }
+        public decimal? TasaCambio { get; set; }
+        public DateTime Fecha { get; set; }
+
     }
 }

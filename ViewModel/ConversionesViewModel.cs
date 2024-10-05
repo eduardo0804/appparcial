@@ -6,8 +6,8 @@ using appparcial.Models;
 
 namespace appparcial.ViewModel
 {
-    public class HistorialConversionViewModel
+    public class ConversionesViewModel
     {
-        public List<HistorialConversion>? ListarHistorialConversiones { get; set; }
+        public List<HistorialConversion>? ListarConversiones { get; set; }
     }
 }
